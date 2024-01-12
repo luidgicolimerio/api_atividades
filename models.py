@@ -35,6 +35,10 @@ class Atividades(Base):
     pessoa_id = Column(Integer, ForeignKey('pessoas.id'))
     pessoa = relationship("Pessoas")
 
+    def save(self):
+        db_session.add(self)
+        db_session.commit()
+
 # Função para criar o banco de dados
 def init_db():
     Base.metadata.create_all(bind=engine)
